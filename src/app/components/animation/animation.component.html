@@ -1,0 +1,31 @@
+<div class="centered-container">
+    <br>
+    <div class="full-width">
+        <span class="p-input-icon-right">
+            <input type="text"
+                   pInputText 
+                   [(ngModel)]="pokemonName"
+                   placeholder="Ingrese el nombre de un Pokemon" 
+                   class="full-width">
+        </span>
+        <p-button 
+            icon="pi pi-search" 
+            (click)="loadPokemon()" 
+            label="Buscar" 
+            class="search-button">
+        </p-button>
+    </div>
+
+    <div *ngIf="loading()">
+        <div class="loader-container">
+            <span class="loader"></span>
+        </div>
+    </div>
+
+    <div *ngIf="pokemonData() && pokemonData().species">
+        <h1>{{ pokemonData().species.name }}</h1>
+        <img [src]="imagenActual()" alt="Imagen de animación" height="150" width="150">
+    </div>
+</div>
+
+<p-toast></p-toast>
